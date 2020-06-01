@@ -1,0 +1,54 @@
+<p id="notice"><%= notice %></p>
+
+<p class="float-right">
+  <%= check_stock(@product) %>
+</p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @product.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @product.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @product.price %>
+</p>
+
+<p>
+  <strong>Category:</strong>
+  <%= @product.category.name %>
+</p>
+
+<p>
+  <strong>Image URL:</strong>
+  <%= image_tag @product.image, class: 'float-right img-responsive', height: '240px' unless @product.image.blank? %>
+  <%= @product.image %>
+</p>
+
+<p>
+  <strong>Discount %:</strong>
+  <%= @product.discountpercentage %>
+</p>
+
+<p>
+  <strong>Active:</strong>
+  <%= @product.active %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @product.rating %>
+</p>
+
+<p>
+  <strong>Stock:</strong>
+  <%= @product.stock %>
+</p>
+
+<%= link_to 'Edit', edit_product_path(@product) %> |
+<%= link_to 'Back', products_path %>
