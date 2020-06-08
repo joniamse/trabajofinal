@@ -19,16 +19,13 @@
 
         <p class="card-text"><%= product.description %></p>
         
-        
-
-        <% if product.discountpercentage = 0 %>
+        <% if product.discountpercentage > 0 %>
+          <p class="card-text"><strong>Price: <p><s><%= product.price %></s></p></strong><%= price_calculate(product) %></p>
+        <% else %>
           <p class="card-text"><strong>Price: </strong><%= product.price %></p>
         <% end %>
 
-        <% if product.discountpercentage > 0 %>
-          <p class="card-text"><strong>Price: <p><s><%= product.price %></s></p></strong><%= price_calculate(product) %></p>
-        <% end %>
-
+        
 
         <%= link_to 'SHOW', product, class: 'btn btn-sm btn-outline-secondary' %>
         <%= check_stock(product) %>
