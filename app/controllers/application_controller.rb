@@ -10,6 +10,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  	def current_user
+  		return current_account
+  	end
+
 	protected
 
 	def configure_permitted_parameters
