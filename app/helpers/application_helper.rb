@@ -9,6 +9,8 @@ module ApplicationHelper
     end
   end
 
+  
+
   def check_stock(product)
     if product.stock < 1
       return link_to 'NO STOCK', "#", class: 'btn btn-sm btn-outline-danger'

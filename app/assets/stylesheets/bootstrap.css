@@ -11,6 +11,7 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ 
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700&display=swap");
 :root {
   --blue: #446E9B;
@@ -69,7 +70,7 @@ body {
   line-height: 1.5;
   color: #777;
   text-align: left;
-  background-color: #fff;
+  background-color: #B6F9B6;
 }
 
 [tabindex="-1"]:focus:not(:focus-visible) {
@@ -2832,8 +2833,8 @@ fieldset:disabled a.btn {
 }
 
 .btn-secondary:hover {
-  color: #fff;
-  background-color: #868686;
+  background-color: white; 
+  color: #AEEABE;
   border-color: #807f7f;
 }
 
@@ -4622,19 +4623,20 @@ input[type="button"].btn-block {
 }
 
 .navbar {
-  position: relative;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  padding: 0.5rem 1rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    padding: 0.5rem 1rem;
+    background-color: #86E186;
 }
 
 .navbar .container,
@@ -7182,7 +7184,7 @@ button.bg-info:focus {
 }
 
 .bg-warning {
-  background-color: #D47500 !important;
+  background-color: #39A439 !important;
 }
 
 a.bg-warning:hover, a.bg-warning:focus,
