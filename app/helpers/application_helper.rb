@@ -15,8 +15,7 @@ module ApplicationHelper
     if product.stock < 1
       return link_to 'NO STOCK', "#", class: 'btn btn-sm btn-outline-danger'
     else
-      return link_to 'BUY', "#", class: 'btn btn-sm btn-outline-success'
+      return link_to 'BUY', homes_path, class: 'btn btn-sm btn-outline-success'
     end
   end
-
 end

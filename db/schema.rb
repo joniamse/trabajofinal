@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_10_003550) do
+ActiveRecord::Schema.define(version: 2020_06_11_203032) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -75,6 +75,8 @@ ActiveRecord::Schema.define(version: 2020_06_10_003550) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "user_id", null: false
+    t.integer "purchase_id", null: false
+    t.index ["purchase_id"], name: "index_homes_on_purchase_id"
     t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
@@ -103,6 +105,12 @@ ActiveRecord::Schema.define(version: 2020_06_10_003550) do
     t.index ["category_id"], name: "index_products_on_category_id"
   end
 
+  create_table "purchases", force: :cascade do |t|
+    t.string "payment"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "username"
     t.string "password"
@@ -116,6 +124,7 @@ ActiveRecord::Schema.define(version: 2020_06_10_003550) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "homes", "purchases"
   add_foreign_key "homes", "users"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"

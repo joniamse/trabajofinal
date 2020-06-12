@@ -1,6 +1,6 @@
 class CombineItemsInCart < ActiveRecord::Migration[6.0]
   def up
-  	Cart.all.each do |cart|
+  	Cart.find(session[:cart_id]).each do |cart|
   	  sums = cart.line_items.group(:product_id).sum(:quantity)
   	  sums.each do |product_id, quantity|
   		if quantity > 1
@@ -25,5 +25,4 @@ class CombineItemsInCart < ActiveRecord::Migration[6.0]
   		line_item.destroy	
   	end
   end
-
 end
