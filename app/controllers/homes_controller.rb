@@ -1,10 +1,12 @@
 class HomesController < ApplicationController
   before_action :set_home, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_account!
 
   # GET /homes
   # GET /homes.json
   def index
-    @homes = Home.all
+    @homes = Home.all.where(:account_id => current_account.id)
+    
   end
 
   # GET /homes/1
@@ -69,6 +71,6 @@ class HomesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def home_params
-      params.require(:home).permit(:address, :postalcode, :country, :province, :location, :reference, :purchase_id)
+      params.require(:home).permit(:address, :postalcode, :country, :province, :location, :reference, :purchase_id, :account_id)
     end
 end

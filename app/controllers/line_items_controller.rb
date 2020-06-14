@@ -1,16 +1,31 @@
 class LineItemsController < ApplicationController
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_account!, except: [] 
+  #load_and_authorize_resource
 
   include CurrentCart
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   
-  
+  def recorrido
+      list = []
+      for l in LineItem.all
+        for c in Cart.all
+          if l.cart == c
+            if c.account_id == current_account.id
+              list.push l
+            end
+          end
+        end
+      end
+      return list
+  end
 
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = LineItem.all
+    @line_items = recorrido
+
   end
 
   # GET /line_items/1
@@ -33,6 +48,7 @@ class LineItemsController < ApplicationController
   # POST /line_items.json
   def create
     product = Product.find(params[:product_id])
+    
     @line_item = @cart.add_product(product)
 
     respond_to do |format|

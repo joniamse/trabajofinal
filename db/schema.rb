@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_11_203032) do
+ActiveRecord::Schema.define(version: 2020_06_14_211138) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -28,7 +28,9 @@ ActiveRecord::Schema.define(version: 2020_06_11_203032) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.boolean "admin", default: false
+    t.integer "line_item_id"
     t.index ["email"], name: "index_accounts_on_email", unique: true
+    t.index ["line_item_id"], name: "index_accounts_on_line_item_id"
     t.index ["reset_password_token"], name: "index_accounts_on_reset_password_token", unique: true
   end
 
@@ -56,6 +58,8 @@ ActiveRecord::Schema.define(version: 2020_06_11_203032) do
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "account_id"
+    t.index ["account_id"], name: "index_carts_on_account_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -74,10 +78,10 @@ ActiveRecord::Schema.define(version: 2020_06_11_203032) do
     t.string "reference"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
-    t.integer "user_id", null: false
     t.integer "purchase_id", null: false
+    t.integer "account_id", null: false
+    t.index ["account_id"], name: "index_homes_on_account_id"
     t.index ["purchase_id"], name: "index_homes_on_purchase_id"
-    t.index ["user_id"], name: "index_homes_on_user_id"
   end
 
   create_table "line_items", force: :cascade do |t|
@@ -123,9 +127,11 @@ ActiveRecord::Schema.define(version: 2020_06_11_203032) do
     t.boolean "admin"
   end
 
+  add_foreign_key "accounts", "line_items"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "carts", "accounts"
+  add_foreign_key "homes", "accounts"
   add_foreign_key "homes", "purchases"
-  add_foreign_key "homes", "users"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
   add_foreign_key "products", "categories"

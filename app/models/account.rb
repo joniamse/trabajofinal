@@ -1,4 +1,6 @@
 class Account < ApplicationRecord
+	has_many :homes
+	has_many :carts
 	
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

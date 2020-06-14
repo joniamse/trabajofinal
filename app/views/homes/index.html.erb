@@ -2,11 +2,13 @@
 
 <h1>Homes</h1>
 
+
+
+
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Surname</th>
       <th>Address</th>
       <th>Postalcode</th>
       <th>Country</th>
@@ -20,8 +22,7 @@
   <tbody>
     <% @homes.each do |home| %>
       <tr>
-        <td><%= home.user.name %></td>
-        <td><%= home.user.surname %></td>
+        <td><%= home.account.first_name %></td>
         <td><%= home.address %></td>
         <td><%= home.postalcode %></td>
         <td><%= home.country %></td>
