@@ -16,6 +16,10 @@ module ApplicationHelper
       return link_to 'NO STOCK', "#", class: 'btn btn-sm btn-outline-danger'
     else
       return link_to 'BUY', homes_path, class: 'btn btn-sm btn-outline-success'
+
     end
   end
+
+  
+
 end

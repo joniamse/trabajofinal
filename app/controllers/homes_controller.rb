@@ -71,6 +71,6 @@ class HomesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def home_params
-      params.require(:home).permit(:address, :postalcode, :country, :province, :location, :reference, :purchase_id, :account_id)
+      params.require(:home).permit(:address, :postalcode, :country, :province, :location, :reference, :purchase_id, :account_id, :billing_id)
     end
 end

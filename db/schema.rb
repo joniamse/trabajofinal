@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_14_211138) do
+ActiveRecord::Schema.define(version: 2020_06_15_163122) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -55,6 +55,12 @@ ActiveRecord::Schema.define(version: 2020_06_14_211138) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "billings", force: :cascade do |t|
+    t.date "date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -80,7 +86,9 @@ ActiveRecord::Schema.define(version: 2020_06_14_211138) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "purchase_id", null: false
     t.integer "account_id", null: false
+    t.integer "billing_id"
     t.index ["account_id"], name: "index_homes_on_account_id"
+    t.index ["billing_id"], name: "index_homes_on_billing_id"
     t.index ["purchase_id"], name: "index_homes_on_purchase_id"
   end
 
@@ -131,6 +139,7 @@ ActiveRecord::Schema.define(version: 2020_06_14_211138) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "carts", "accounts"
   add_foreign_key "homes", "accounts"
+  add_foreign_key "homes", "billings"
   add_foreign_key "homes", "purchases"
   add_foreign_key "line_items", "carts"
   add_foreign_key "line_items", "products"
