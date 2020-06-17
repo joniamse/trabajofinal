@@ -1,3 +1,6 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+<head>
 <p id="notice"><%= notice %></p>
 
 <h1>Categories</h1>
@@ -16,9 +19,9 @@
       <tr>
         <td><%= category.name %></td>
         <td><%= category.description %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', category, class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Edit', edit_category_path(category), class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Destroy', category, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -26,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Category', new_category_path %>
+<%= link_to 'New Category', new_category_path, class: 'btn btn-sm btn-outline-success' %>

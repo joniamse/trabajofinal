@@ -7,6 +7,8 @@ class CartsController < ApplicationController
   # GET /carts.json
   def index
     @carts = Cart.all
+
+    
   end
 
   # GET /carts/1
@@ -18,6 +20,7 @@ class CartsController < ApplicationController
   def new
     @cart = Cart.new
     @accountid = current_account.id
+
   end
 
   # GET /carts/1/edit
@@ -75,6 +78,6 @@ class CartsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def cart_params
-      params.fetch(:cart, {})
+      params.require(:cart).permit(:billing_id, :account_id)
     end
 end

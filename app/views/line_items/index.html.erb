@@ -1,3 +1,6 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+<head>
 <p id="notice"><%= notice %></p>
 
 <h1>Line Items</h1>
@@ -8,7 +11,6 @@
       
       <th>Cart ID</th>
       <th>Product ID</th>
-      <th>COUNT</th>
       <th>Product Name</th>
       <th>Category</th>
       <th>Price</th>
@@ -20,19 +22,18 @@
     <% @line_items.each do |line_item| %>
       <tr>
         <td><%= line_item.cart_id %></td>
-        <td><%= line_item.product_id %></td>  
-         
+        <td><%= line_item.product_id %></td>     
         <td><%= line_item.product.name %></td>
         <td><%= line_item.product.category.name %></td>
         <td><%= price_calculate(line_item.product) %></td>
-        <td><%= link_to 'Show', line_item %></td>
-        <td><%= link_to 'Edit', edit_line_item_path(line_item) %></td>
-        <td><%= link_to 'Destroy', line_item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        
+        <td><%= link_to 'Edit', edit_line_item_path(line_item), class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Destroy', line_item, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
+<%= link_to 'BUY', homes_path, class: 'btn btn-sm btn-outline-success' %>
 
-<%= link_to 'New Line Item', new_line_item_path %>

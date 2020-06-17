@@ -1,6 +1,7 @@
 class Cart < ApplicationRecord
 	has_many :line_items, dependent: :destroy
 	belongs_to :account
+	belongs_to :billing
 	
 	after_initialize :default_values
 

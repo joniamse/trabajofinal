@@ -7,24 +7,17 @@ class LineItemsController < ApplicationController
   before_action :set_cart, only: [:create]
   before_action :set_line_item, only: [:show, :edit, :update, :destroy]
   
-  def recorrido
-      list = []
-      for l in LineItem.all
-        for c in Cart.all
-          if l.cart == c
-            if c.account_id == current_account.id
-              list.push l
-            end
-          end
-        end
-      end
-      return list
-  end
+  
 
   # GET /line_items
   # GET /line_items.json
   def index
-    @line_items = recorrido
+    @line_items = LineItem.all
+    #@showcart = LineItem.account.carts
+
+    #@line_items = @line_items.recorrido
+    #@line_items = LineItem.all.where(account.carts => current_account.id)
+    #@usuario_carts = Account.carts
 
   end
 

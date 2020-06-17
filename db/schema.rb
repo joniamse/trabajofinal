@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_06_15_163122) do
+ActiveRecord::Schema.define(version: 2020_06_16_210041) do
 
   create_table "accounts", force: :cascade do |t|
     t.string "first_name", default: "", null: false
@@ -59,13 +59,17 @@ ActiveRecord::Schema.define(version: 2020_06_15_163122) do
     t.date "date"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "cart_id"
+    t.index ["cart_id"], name: "index_billings_on_cart_id"
   end
 
   create_table "carts", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "account_id"
+    t.integer "billing_id"
     t.index ["account_id"], name: "index_carts_on_account_id"
+    t.index ["billing_id"], name: "index_carts_on_billing_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -137,7 +141,9 @@ ActiveRecord::Schema.define(version: 2020_06_15_163122) do
 
   add_foreign_key "accounts", "line_items"
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "billings", "carts"
   add_foreign_key "carts", "accounts"
+  add_foreign_key "carts", "billings"
   add_foreign_key "homes", "accounts"
   add_foreign_key "homes", "billings"
   add_foreign_key "homes", "purchases"

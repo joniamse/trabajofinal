@@ -1,3 +1,6 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+<head>
 <p id="notice"><%= notice %></p>
 
 <h1>Billings</h1>
@@ -14,9 +17,9 @@
     <% @billings.each do |billing| %>
       <tr>
         <td><%= billing.date %></td>
-        <td><%= link_to 'Show', billing %></td>
-        <td><%= link_to 'Edit', edit_billing_path(billing) %></td>
-        <td><%= link_to 'Destroy', billing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', billing, class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Edit', edit_billing_path(billing), class: 'btn btn-sm btn-outline-success' %></td>
+        <td><%= link_to 'Destroy', billing, class: 'btn btn-sm btn-outline-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,3 +28,4 @@
 <br>
 
 <%= link_to 'New Billing', new_billing_path %>
+<%= link_to 'CONFIRM', '#', class: 'btn btn-sm btn-outline-success' %>

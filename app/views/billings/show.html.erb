@@ -1,3 +1,6 @@
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Sriracha&display=swap" rel="stylesheet">
+<head>
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,10 +8,13 @@
   <%= @billing.date %>
 </p>
 
+
+
+
 <p>
   <strong>Thank you very much, your order is being processed</strong>
   
 </p>
 
-<%= link_to 'Edit', edit_billing_path(@billing) %> |
-<%= link_to 'Back', billings_path %>
+<%= link_to 'Edit', edit_billing_path(@billing), class: 'btn btn-sm btn-outline-success' %> |
+<%= link_to 'Back', billings_path, class: 'btn btn-sm btn-outline-danger' %>
